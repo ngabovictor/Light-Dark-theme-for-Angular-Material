@@ -1,0 +1,67 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+/* For use in src/lib/core/theming/_palette.scss */
+$primary-color: (
+  500: #1f71a8, // You can put any color here
+  contrast: (
+    500: #ffffff
+  )
+);
+
+$accent-color: (
+  500: #1ea1f2, // You can put any color here
+  contrast: (
+    500: #ffffff
+  )
+);
+
+$background-color: #15202a; // You can put any color here
+
+$foreground-color: #fff; // You can put any color here
+
+$app-primary: mat-palette($primary-color);
+
+$app-accent: mat-palette($accent-color);
+
+// The warn palette is optional (defaults to red).
+$app-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$dark-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+
+// Insert custom background color
+$background: map-get($dark-theme, background);
+$background: map_merge(
+  $background,
+  (
+    background: $background-color
+  )
+);
+$dark-theme: map_merge(
+  $dark-theme,
+  (
+    background: $background
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+.dark-theme {
+  @include angular-material-theme($dark-theme);
+  background: $background-color !important;
+  color: $foreground-color !important;
+  min-height: 100%;
+}
