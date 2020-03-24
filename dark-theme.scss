@@ -12,25 +12,110 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 
+
+
+// Function to accept multiple colors
+
+$base-background: (
+    50 : #e3e4e5,
+    100 : #b9bcbf,
+    200 : #8a9095,
+    300 : #5b636a,
+    400 : #38414a,
+    500 : #15202a,
+    600 : #121c25,
+    700 : #0f181f,
+    800 : #0c1319,
+    900 : #060b0f,
+    A100 : #53b8ff,
+    A200 : #20a2ff,
+    A400 : #008aec,
+    A700 : #007bd2,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+  );
+
+$mat-dark-theme-background: (
+  status-bar: black,
+  app-bar:    map_get($base-background, 900),
+  background: #15202a,
+  hover:      rgba(white, 0.04), // TODO(kara): check style with Material Design UX
+  card:       map_get($base-background, 500),
+  dialog:     map_get($base-background, 500),
+  disabled-button: rgba(white, 0.12),
+  raised-button: map-get($base-background, 800),
+  focused-button: $light-focused,
+  selected-button: map_get($base-background, 900),
+  selected-disabled-button: map_get($base-background, 800),
+  disabled-button-toggle: black,
+  unselected-chip: map_get($base-background, 700),
+  disabled-list-option: black,
+  tooltip: map_get($base-background, 700),
+);
+
+// Foreground palette for dark themes.
+$mat-dark-theme-foreground: (
+  base:              white,
+  divider:           $light-dividers,
+  dividers:          $light-dividers,
+  disabled:          $light-disabled-text,
+  disabled-button:   rgba(white, 0.3),
+  disabled-text:     $light-disabled-text,
+  elevation:         black,
+  hint-text:         $light-disabled-text,
+  secondary-text:    $light-secondary-text,
+  icon:              white,
+  icons:             white,
+  text:              white,
+  slider-min:        white,
+  slider-off:        rgba(white, 0.3),
+  slider-off-active: rgba(white, 0.3),
+);
+
+// Creates a container object for a dark theme to be given to individual component theme mixins.
+@function custom-dark-theme($primary, $accent, $warn: mat-palette($mat-red), $foreground: mat-palette($mat-dark-theme-foreground), $background: mat-palette($mat-dark-theme-background)) {
+    @return (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
+      is-dark: true,
+      foreground: $foreground,
+      background: $background,
+    );
+  }
+
 /* For use in src/lib/core/theming/_palette.scss */
 $primary-color: (
-  500: #1f71a8, // You can put any color here
+  500: #1f71a8,
   contrast: (
     500: #ffffff
   )
 );
 
 $accent-color: (
-  500: #1ea1f2, // You can put any color here
+  500: #1ea1f2,
   contrast: (
     500: #ffffff
   )
 );
 
-$background-color: #15202a; // You can put any color here
+$app-background: $mat-dark-theme-background;
 
-$foreground-color: #fff; // You can put any color here
-
+$app-foreground: $mat-dark-theme-foreground;
 $app-primary: mat-palette($primary-color);
 
 $app-accent: mat-palette($accent-color);
@@ -39,29 +124,16 @@ $app-accent: mat-palette($accent-color);
 $app-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$dark-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+// $dark-theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
+$dark-theme: custom-dark-theme($app-primary, $app-accent, $app-warn, $app-foreground, $app-background);
 
-// Insert custom background color
-$background: map-get($dark-theme, background);
-$background: map_merge(
-  $background,
-  (
-    background: $background-color
-  )
-);
-$dark-theme: map_merge(
-  $dark-theme,
-  (
-    background: $background
-  )
-);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 .dark-theme {
   @include angular-material-theme($dark-theme);
-  background: $background-color !important;
-  color: $foreground-color !important;
+  background: map_get($base-background, 800) !important;
+  color: #e3e4e5 !important;
   min-height: 100%;
 }

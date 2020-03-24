@@ -31,6 +31,7 @@ This is a custom theme made for `Material` in `Angular`. It used `Twitter` color
 ```bash
 ...
 import { ThemingService } from './theming-service/themes.service';
+import { OverlayContainer } from '@angular/cdk/overlay';
 ...
 ```
 
@@ -43,6 +44,19 @@ providers: [
     ThemingService,
     ...
 ]
+...
+```
+
+Add classes to export class
+
+```bash
+...
+export class YourModule {
+  constructor(overlayContainer: OverlayContainer) {
+    overlayContainer.getContainerElement().classList.add('light-theme');
+    overlayContainer.getContainerElement().classList.add('dark-theme');
+  }
+}
 ...
 ```
 

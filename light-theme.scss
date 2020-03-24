@@ -1,6 +1,6 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -14,16 +14,68 @@
 
 /* For use in src/lib/core/theming/_palette.scss */
 $primary-color: (
-  500: #1f71a8, // You can put any color here
+  50: #e4eef5,
+  100: #bcd4e5,
+  200: #8fb8d4,
+  300: #629cc2,
+  400: #4186b5,
+  500: #1f71a8,
+  600: #1b69a0,
+  700: #175e97,
+  800: #12548d,
+  900: #0a427d,
+  A100: #add1ff,
+  A200: #7ab4ff,
+  A400: #4798ff,
+  A700: #2d89ff,
   contrast: (
-    500: #ffffff
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #ffffff
   )
 );
 
 $accent-color: (
-  500: #15202a, // You can put any color here
+  50: #e3e4e5,
+  100: #b9bcbf,
+  200: #8a9095,
+  300: #5b636a,
+  400: #38414a,
+  500: #15202a,
+  600: #121c25,
+  700: #0f181f,
+  800: #0c1319,
+  900: #060b0f,
+  A100: #53b8ff,
+  A200: #20a2ff,
+  A400: #008aec,
+  A700: #007bd2,
   contrast: (
-    500: #ffffff
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff
   )
 );
 
@@ -34,19 +86,13 @@ $app-accent: mat-palette($accent-color);
 // The warn palette is optional (defaults to red).
 $app-warn: mat-palette($mat-red);
 
-$background-color: #ffffff; // You can put any color here
-
-$foreground-color: #000; // You can put any color here
-
 // Create the theme object (a Sass map containing all of the palettes).
 $light-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
-
-
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 .light-theme {
-    @include angular-material-theme($light-theme);
-    min-height: 100%;
+  @include angular-material-theme($light-theme);
+  min-height: 100%;
 }
