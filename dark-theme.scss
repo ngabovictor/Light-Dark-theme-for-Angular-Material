@@ -64,7 +64,7 @@ $mat-dark-theme-background: (
   disabled-button-toggle: black,
   unselected-chip: map_get($base-background, 700),
   disabled-list-option: black,
-  tooltip: map_get($base-background, 700),
+  tooltip: map_get($base-background, 700)
 );
 
 // Foreground palette for dark themes.
@@ -100,17 +100,69 @@ $mat-dark-theme-foreground: (
 
 /* For use in src/lib/core/theming/_palette.scss */
 $primary-color: (
-  500: #1f71a8,
-  contrast: (
-    500: #ffffff
-  )
+  50 : #e4eef5,
+    100 : #bcd4e5,
+    200 : #8fb8d4,
+    300 : #629cc2,
+    400 : #4186b5,
+    500 : #1f71a8,
+    600 : #1b69a0,
+    700 : #175e97,
+    800 : #12548d,
+    900 : #0a427d,
+    A100 : #add1ff,
+    A200 : #7ab4ff,
+    A400 : #4798ff,
+    A700 : #2d89ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
 );
 
 $accent-color: (
-  500: #1ea1f2,
-  contrast: (
-    500: #ffffff
-  )
+  50 : #e4f4fd,
+    100 : #bce3fb,
+    200 : #8fd0f9,
+    300 : #62bdf6,
+    400 : #40aff4,
+    500 : #1ea1f2,
+    600 : #1a99f0,
+    700 : #168fee,
+    800 : #1285ec,
+    900 : #0a74e8,
+    A100 : #ffffff,
+    A200 : #dfedff,
+    A400 : #acd0ff,
+    A700 : #92c1ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
 );
 
 $app-background: $mat-dark-theme-background;
@@ -133,7 +185,6 @@ $dark-theme: custom-dark-theme($app-primary, $app-accent, $app-warn, $app-foregr
 // that you are using.
 .dark-theme {
   @include angular-material-theme($dark-theme);
-  background: map_get($base-background, 800) !important;
+  // background: map_get($base-background, 800) !important;
   color: #e3e4e5 !important;
-  min-height: 100%;
 }

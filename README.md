@@ -52,9 +52,18 @@ Add classes to export class
 ```bash
 ...
 export class YourModule {
-  constructor(overlayContainer: OverlayContainer) {
-    overlayContainer.getContainerElement().classList.add('light-theme');
-    overlayContainer.getContainerElement().classList.add('dark-theme');
+  constructor(overlayContainer: OverlayContainer, theming: ThemesService) {
+    theming.defaultTheme.subscribe((theme: string) => {
+      let themeToRemove = 'dark-theme';
+      if (theme === 'dark-theme') {
+        themeToRemove = 'light-theme';
+        document.querySelector("body").style.background = '#060b0f';
+      } else {
+        document.querySelector("body").style.background = '#fff';
+      }
+      overlayContainer.getContainerElement().classList.remove(themeToRemove);
+      overlayContainer.getContainerElement().classList.add(theme);
+    });
   }
 }
 ...

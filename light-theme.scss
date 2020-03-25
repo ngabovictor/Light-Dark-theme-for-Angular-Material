@@ -94,5 +94,4 @@ $light-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 // that you are using.
 .light-theme {
   @include angular-material-theme($light-theme);
-  min-height: 100%;
 }
